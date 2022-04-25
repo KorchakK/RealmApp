@@ -52,7 +52,7 @@ class TaskListViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
         let taskList = taskLists[indexPath.row]
         content.text = taskList.name
-        content.secondaryText = "\(taskList.tasks.count)"
+        content.secondaryText = tasksCounter(taskList)
         cell.contentConfiguration = content
         return cell
     }
@@ -130,5 +130,18 @@ extension TaskListViewController {
         StorageManager.shared.save(taskList)
         let rowIndex = IndexPath(row: taskLists.index(of: taskList) ?? 0, section: 0)
         tableView.insertRows(at: [rowIndex], with: .automatic)
+    }
+    
+    private func tasksCounter(_ taskList: TaskList) -> String {
+        let actualTasks = taskList.tasks.filter("isComplete = false")
+        var tasksCount = ""
+        if taskList.tasks.isEmpty {
+            tasksCount = "0"
+        } else if actualTasks.count == 0 {
+            tasksCount = "✔"
+        } else {
+            tasksCount = String(actualTasks.count)
+        }
+        return tasksCount
     }
 }
