@@ -78,6 +78,7 @@ class StorageManager {
             task.name = newValue
         }
     }
+    // MARK: - Sorting
     
     private func write(completion: () -> Void) {
         do {

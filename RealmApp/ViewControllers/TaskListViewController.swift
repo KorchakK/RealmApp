@@ -32,6 +32,16 @@ class TaskListViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    @IBAction func sortButtonPressed(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            taskLists = taskLists.sorted(byKeyPath: "date")
+        } else {
+            taskLists = taskLists.sorted(byKeyPath: "name")
+        }
+        tableView.reloadData()
+    }
+
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         taskLists.count

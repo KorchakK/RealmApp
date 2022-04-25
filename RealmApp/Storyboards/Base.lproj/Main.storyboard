@@ -23,6 +23,7 @@
                                 <segment title="A-Z"/>
                             </segments>
                             <connections>
+                                <action selector="sortButtonPressed:" destination="qX0-tw-d0x" eventType="valueChanged" id="fkD-Ui-52k"/>
                                 <action selector="sortingList:" destination="qX0-tw-d0x" eventType="valueChanged" id="1YQ-bZ-RKp"/>
                             </connections>
                         </segmentedControl>
